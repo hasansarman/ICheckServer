@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_installinit
+if [ -x "/etc/init.d/serverchecker" ] || [ -e "/etc/init/serverchecker.conf" ]; then
+	invoke-rc.d serverchecker stop || exit $?
+fi
+# End automatically added section

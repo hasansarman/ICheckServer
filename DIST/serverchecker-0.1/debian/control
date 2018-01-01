@@ -1,0 +1,15 @@
+Source: serverchecker
+Section: admin
+Priority: optional
+Maintainer: Hasan SARMAN <hasansarman@gmail.com>
+Build-Depends: debhelper (>=9)
+Standards-Version: 3.9.6
+Homepage: https://radonrad.com
+#Vcs-Git: git://anonscm.debian.org/collab-maint/serverchecker.git
+Vcs-Browser: https://github.com/hasansarman/ServerHealthCheckerwithWebService
+
+Package: serverchecker
+Architecture: all
+Depends: default-jre-headless | java6-runtime-headless | java6-runtime | java7-runtime-headless | java7-runtime | java8-runtime-headless | java8-runtime
+Description: ServerChecker Administrator tool for professionals.
+ ServerChecker Administrator Tool for Professionalls with SOAP/REST apis.

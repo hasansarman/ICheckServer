@@ -1,0 +1,82 @@
+
+How to create .deb Debian package for Java web application
+Last updated on April 4, 2013 Authored by Dan Nanni	Leave a comment
+
+Suppose you have built a Java web application as a Java servlet. Now you want to create .deb Debian package for the Java web application, such that when you install the .deb package file, it will automatically install any prerequisite packages (e.g., Java and Tomcat web server), and deploy the Java servlet on Tomcat.
+
+I assume that you already built and exported a Java servlet into .war file. Then the Debian package will simply consist of .war blob file, and any dependency information. Here is guide on how to create .deb package from .war file.
+
+First, install any necessary packages to build a Debian package.
+$ sudo apt-get install dh-make debhelper devscripts fakeroot
+
+Create a directory for your application.
+$ mkdir myapp-0.1
+
+Copy your .war application file to the directory.
+$ cp myapp.war myapp-0.1
+$ cd myapp-0.1
+
+Create skeleton files needed for packaging.
+$ dh_make -s --indep --createorig
+
+Maintainer name  : My Name
+Email-Address    : my_email@unknown 
+Date             : Tue, 02 Apr 2013 11:33:28 -0400
+Package Name     : myapp
+Version          : 0.1
+License          : blank
+Type of Package  : Independent
+Hit  to confirm: 
+
+Once you hit <enter>, it will create several skeleton files in myapp-0.1/debian/
+
+Since you are packaging a pre-built .war file, you don't need any build process within packaging rules. Remove any reference to "makefile" from debian/rules.
+$ grep -v makefile debian/rules > debian/rules.temp
+$ mv debian/rules.temp debian/rules
+
+The next step is to modify debian/install. Here you specify a list of files to install, as well as their respective installation directories. In our example, files to install correspond to .war file, and installation directory is the webapps directory of Tomcat. Assuming that .war file was built for Tomcat7 web server, you modify debian/install as follows.
+$ echo myapp.war /var/lib/tomcat7/webapps > debian/install
+
+Modify debian/source/format as we will not be building a quilt based package.
+$ echo "1.0" > debian/source/format
+
+Remove unnecessary example files.
+$ rm debian/*.ex
+
+Modify control information of your package. Importantly, you need to specify tomcat7 as dependent package (in "Depends:" field). You don't need to specify Java as dependent since Java dependency is implicitly implied by adding tomcat7 which in turn depends on Java.
+$ vi debian/control
+
+Source: myapp
+Section: unknown
+Priority: extra
+Maintainer: My Name 
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Homepage: 
+#Vcs-Git: git://git.debian.org/collab-maint/indoornav.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/indoornav.git;a=summary
+
+Package: myapp
+Architecture: all
+Depends: tomcat7
+Description: This is my web application.
+This is a long description of my web application.
+
+Finally, build the package.
+$ debuild -us -uc
+
+After building is completed, you will have .deb file generated in the parent directory.
+$ ls ../*deb
+
+myapp_0.1-1_all.deb
+
+
+//////////////////////////////////////////////////////////////////
+
+
+
+debuild -us -uc -S
+
+debsign   -S -k5A0ADEB3 serverchecker_0.1-3_amd64.changes
+dput ppa:hasansarman/serverchecker serverchecker_0.1-3_amd64.changes 
+//////////////////////////////////////////////////////////////////////
