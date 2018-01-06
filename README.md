@@ -76,8 +76,12 @@ for additional installation methods please check this topic.
  
  
 ### By default REST is configured and after you start your service you can check your service via links below..
- If you are using REST you can check your webservice via http://[serverip]:9898/application.wadl
- If you are using SOAP you can check our webservice via http://[serverip]:9898/StatusWebService?wsdl
+
+ ###### If you are using REST you can check your webservice via 
+ http://[serverip]:9898/application.wadl
+ 
+ ###### If you are using SOAP you can check our webservice via
+ http://[serverip]:9898/StatusWebService?wsdl
            
    
 
