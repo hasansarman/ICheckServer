@@ -12,32 +12,33 @@ In contrary to all other server checking softwares we provide IOS  & Android App
 
 
 
-Requirements
+## Requirements
 ============
 
 * JAVA (Jre or Jdk) >= 6 (it will automatically install if you use 1st installation method.)
 [JDK JRE](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
 
-Installation 
+## Installation 
 ============
 There are multiple ways to install the software. You can even modify and change the code for you needs.
 
-###1st Way
+### Installation Method 1
+for additional installation methods please check this topic.
  Add ubuntu ppa to your system.
   ```perl
  sudo add-apt-repository ppa:hasansarman/serverchecker
 
  ```
- ###Update package lists
+ ### Update package lists
  ```perl
  sudo apt-get update 
  ``` 
- ###Install
+ ### Install
  ```perl
  sudo apt-get install serverchecker
  ```
- If you see any errors in the installation process.
+ ### If you see any errors in the installation process.
  ```perl
   sudo apt-get install -f
  ```
@@ -56,50 +57,31 @@ There are multiple ways to install the software. You can even modify and change 
  WEBSERVICE_PORT = 9898
  WEBSERVICE_TYPE = rest
  ```
-  #####Config file
- Stored in /usr/bin/serverchecker/serverchecker.properties
-  ```perl
-  ADMIN_USERNAME = admin 
-  ``` 
-  --> username for using web services.
- ```perl
- ADMIN_PASSWORD = {}0-9-0980-9oijgiyg@#@$% 
- ``` 
---> password for using web services.
- ```perl
- MAX_SQLITE_DATABASE_SIZE = 1000 
- ```
---> Resets the database when 1000mb of the size reached.
- ```perl
- FIXED_REFRESH_FULL_DATA_TIME = 200 
- ```
- --> It will not refresh the data if FIXED_REFRESH functions are called until this time limit ends.so basically it will refresh data every 200 seconds.
- ```perl 
- FIXED_REFRESH_IMPORTANT_SUMMARY_TIME = 100 
- ```
- --> It will not refresh the data if FIXED_REFRESH functions are called until this time limit ends.so basically it will refresh data every 200 seconds.
- ```perl
- FIXED_REFRESH_SMALL_SUMMARY_TIME = 30
- ```
- --> It will not refresh the data if FIXED_REFRESH functions are called until this time limit ends.so basically it will refresh data every 200 seconds.
- ```perl
- WEBSERVICE_PORT = 9898
- ``` 
- ---> Port to listen
- ```perl
- WEBSERVICE_TYPE = rest
- ```
- ---> rest or soap you ve 2 options.
  
  
+ 
+ ## [Wiki](https://github.com/hasansarman/ServerHealthCheckerwithWebService/wiki) 
+============
+ 1. [Installation](https://github.com/hasansarman/ServerHealthCheckerwithWebService/wiki/Installation)
+
+2. [Alternative Installation Methods](https://github.com/hasansarman/ServerHealthCheckerwithWebService/wiki/Alternative-Installation-Methods)
+
+3. [Configuration File](https://github.com/hasansarman/ServerHealthCheckerwithWebService/wiki/Configuration-File)
+
+4. [Rest Functions](https://github.com/hasansarman/ServerHealthCheckerwithWebService/wiki/Rest-Functions)
+ 
+5. [Soap Functions](https://github.com/hasansarman/ServerHealthCheckerwithWebService/wiki/Soap-Functions)
+
+6. [Writing your own app using ServerChecker API](https://github.com/hasansarman/ServerHealthCheckerwithWebService/wiki/Writing-your-own-app-using-ServerChecker-API)
+ 
+ 
+### By default REST is configured and after you start your service you can check your service via links below..
  If you are using REST you can check your webservice via http://[serverip]:9898/application.wadl
  If you are using SOAP you can check our webservice via http://[serverip]:9898/StatusWebService?wsdl
            
    
 
-Service Provider
 
-    
 
 Facade
 
