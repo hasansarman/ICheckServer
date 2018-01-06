@@ -1,6 +1,6 @@
 # Server Health Checker with WebService
  
-=======================
+
 
 
 
@@ -16,7 +16,7 @@ Requirements
 ============
 
 * JAVA (Jre or Jdk) >= 6 (it will automatically install if you use 1st installation method.)
-
+[JDK JRE](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
 
 Installation 
