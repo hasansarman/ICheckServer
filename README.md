@@ -90,6 +90,8 @@ Facade
 
 Usage
 =====
+ServerChecker runs as a linux service on the background. and listens on the port 9898 by default. Accepting REST or SOAp requests and returning json/xml files for needs. 
+[Check our Wiki for detailed information.](https://github.com/hasansarman/ServerHealthCheckerwithWebService/wiki/Writing-your-own-app-using-ServerChecker-API)
 
  
 
