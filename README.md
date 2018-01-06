@@ -13,14 +13,14 @@ In contrary to all other server checking softwares we provide IOS  & Android App
 
 
 ## Requirements
-============
+
 
 * JAVA (Jre or Jdk) >= 6 (it will automatically install if you use 1st installation method.)
 [JDK JRE](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
 
 ## Installation 
-============
+
 There are multiple ways to install the software. You can even modify and change the code for you needs.
 
 ### Installation Method 1
@@ -61,7 +61,7 @@ for additional installation methods please check this topic.
  
  
  ## [Wiki](https://github.com/hasansarman/ServerHealthCheckerwithWebService/wiki) 
-============
+
  1. [Installation](https://github.com/hasansarman/ServerHealthCheckerwithWebService/wiki/Installation)
 
 2. [Alternative Installation Methods](https://github.com/hasansarman/ServerHealthCheckerwithWebService/wiki/Alternative-Installation-Methods)
