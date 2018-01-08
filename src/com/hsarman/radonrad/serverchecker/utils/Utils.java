@@ -28,4 +28,37 @@ public class Utils {
 	        os.close();
 	    }
 	}
+
+	public static String BLOCKER() {
+		// TODO Auto-generated method stub
+		
+		
+		return "BLOCKED";
+		
+	}
+	
+	public static String units = "BKMGTPEZY";
+
+    public static long human_readable_parse(String arg0) {
+        int spaceNdx = arg0.indexOf(" ");
+
+        double ret = Double.parseDouble(arg0.substring(0, spaceNdx));
+
+        String unitString = arg0.substring(spaceNdx+1);
+
+
+        int unitChar = unitString.charAt(0);
+
+        int power = units.indexOf(unitChar);
+
+        boolean isSi = unitString.indexOf('i')!=-1;
+
+        int factor = 1024;
+        if (isSi) 
+        {
+            factor = 1000;
+        }
+        return new Double(ret * Math.pow(factor, power)).longValue();
+    }
+
 }

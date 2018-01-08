@@ -35,7 +35,7 @@ public void StartServer() {
 	
 	String bindingURI = "http://0.0.0.0:"+Statics.WEBSERVICE_PORT+"/StatusWebService";
 
-	if(Statics.WEBSERVICE_TYPE=="soap") {
+	if(Statics.WEBSERVICE_TYPE.contains("soap")) {
 	   StatusWebServiceSoap webServicesoap = new  StatusWebServiceSoap();
      System.setProperty("com.sun.xml.ws.transport.http.client.HttpTransportPipe.dump", "true");
      System.setProperty("com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.dump", "true");
@@ -48,38 +48,42 @@ public void StartServer() {
      Statics.KOKO_ENDPOINT.setExecutor(Executors.newFixedThreadPool(10));
     System.out.println("SOAP!!!! Server started at: " + bindingURI);
 	}
-	else if(Statics.WEBSERVICE_TYPE=="rest") {
-		
+	else if(Statics.WEBSERVICE_TYPE.contains("rest")) {
+		System.out.println("Starting REST  ");
 		 ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 	        context.setContextPath("/");
-
+	        System.out.println("Starting REST  2");
 	        ResourceConfig resourceConfig = new ResourceConfig();
 	        resourceConfig.register(new CORSFilter());
 	       // context.setHandler(resourceConfig);
-	        
+	        System.out.println("Starting REST  4");
 	        Server jettyServer = new Server(Statics.WEBSERVICE_PORT);
 	        jettyServer.setHandler(context);
-	        
+	        System.out.println("Starting REST  5");
 	       
 	        ServletHolder jerseyServlet = context.addServlet(
 	             org.glassfish.jersey.servlet.ServletContainer.class, "/*");
 	        jerseyServlet.setInitOrder(0);
-	       
+	        System.out.println("Starting REST  6");
 	        // Tells the Jersey Servlet which REST service/class to load.
 	        jerseyServlet.setInitParameter(
 	           "jersey.config.server.provider.classnames",
 	           StatusWebServiceRest.class.getCanonicalName());
-	        
+	        System.out.println("Starting REST  7");
 	      
 
 	        try {
 	            jettyServer.start();
+	            System.out.println("Starting REST  8");
 	            jettyServer.join();
+	            System.out.println("Starting REST  9");
 	        } catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+	            
+
 			} finally {
-	            jettyServer.destroy();
+				jettyServer.destroy();
 	        }
 			  
 			  System.out.println("REST!!!! Server started at: " + bindingURI);

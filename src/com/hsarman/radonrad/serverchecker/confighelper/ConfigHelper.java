@@ -80,7 +80,7 @@ private  ConfigHelper() {
 
 	public String getproperty(String name) {
 		CHECK_INSTANCE();
-		String tempodata = config.getString("bonding_engine.host");
+		String tempodata = config.getString(name);
 		return tempodata;
 		//int dbPort = config.getInt("database.port");
 		//String dbUser = config.getString("database.user");
@@ -116,10 +116,42 @@ private  ConfigHelper() {
 	
 	
 			 * */
+		String tempo_wrong=getproperty("MAXIMUM_WRONG_PASSWORD_TRYOUTS");
+		System.out.println("MAXIMUM_WRONG_PASSWORD_TRYOUTS=  "+tempo_wrong);
+		String tempo_wrong_jail=getproperty("WRONG_PASSWORD_JAIL_BLOCK_TIME");
+		System.out.println("WRONG_PASSWORD_JAIL_BLOCK_TIME=  "+tempo_wrong_jail);
+		if(tempo_wrong==null || tempo_wrong=="") {
+			MAXIMUM_WRONG_PASSWORD_TRYOUTS=5;
+		}
+		else {
+			try {
+				Integer.parseInt(tempo_wrong);
+			}
+			catch(Exception e) {
+				MAXIMUM_WRONG_PASSWORD_TRYOUTS=5;
+			}
+		}
+		if(tempo_wrong_jail==null || tempo_wrong_jail=="") {
+			WRONG_PASSWORD_JAIL_BLOCK_TIME=15;
+		}
+		else {
+			try {
+				Integer.parseInt(tempo_wrong_jail);
+			}
+			catch(Exception e) {
+				WRONG_PASSWORD_JAIL_BLOCK_TIME=15;
+			}
+		}
+		
+		
 		ADMIN_USERNAME=getproperty("ADMIN_USERNAME");
+		System.out.println("ADMIN_USERNAME=  "+ADMIN_USERNAME);
+		
 		ADMIN_PASSWORD=getproperty("ADMIN_PASSWORD");
+		System.out.println("ADMIN_PASSWORD=  "+ADMIN_PASSWORD);
 		USERS.put(ADMIN_USERNAME, ADMIN_PASSWORD);
 		String tempo=getproperty("MAX_SQLITE_DATABASE_SIZE");
+		System.out.println("MAX_SQLITE_DATABASE_SIZE=  "+tempo);
 		if(tempo==null || tempo=="") {
 			MAX_SQLITE_DATABASE_SIZE=1000;
 		}
@@ -133,6 +165,7 @@ private  ConfigHelper() {
 		}
 		
 		String tempo2=getproperty("FIXED_REFRESH_FULL_DATA_TIME");
+		System.out.println("FIXED_REFRESH_FULL_DATA_TIME=  "+tempo2);
 		if(tempo2==null || tempo=="") {
 			FIXED_REFRESH_FULL_DATA_TIME=200;
 		}
@@ -147,6 +180,7 @@ private  ConfigHelper() {
 		
 		
 		String tempo3=getproperty("FIXED_REFRESH_IMPORTANT_SUMMARY_TIME");
+		System.out.println("FIXED_REFRESH_IMPORTANT_SUMMARY_TIME=  "+tempo3);
 		if(tempo3==null || tempo3=="") {
 			FIXED_REFRESH_IMPORTANT_SUMMARY_TIME=100;
 		}
@@ -159,6 +193,7 @@ private  ConfigHelper() {
 			}
 		}
 		String tempo4=getproperty("FIXED_REFRESH_SMALL_SUMMARY_TIME");
+		System.out.println("FIXED_REFRESH_SMALL_SUMMARY_TIME=  "+tempo4);
 		if(tempo4==null || tempo4=="") {
 			FIXED_REFRESH_SMALL_SUMMARY_TIME=30;
 		}
@@ -172,6 +207,7 @@ private  ConfigHelper() {
 		}
 		
 		String tempo5=getproperty("WEBSERVICE_PORT");
+		System.out.println("WEBSERVICE_PORT=  "+tempo5);
 		if(tempo5==null || tempo5=="") {
 			WEBSERVICE_PORT=9898;
 		}
@@ -184,6 +220,7 @@ private  ConfigHelper() {
 			}
 		}
 		String tempo5x=getproperty("WEBSERVICE_TYPE");
+		System.out.println("WEBSERVICE_TYPE=  "+tempo5x);
 		if(tempo5x==null || tempo5x=="") {
 			WEBSERVICE_TYPE="rest";
 		}
@@ -196,6 +233,7 @@ private  ConfigHelper() {
 			}
 		}
 		String tempo6=getproperty("MAX_LOG_SIZE");
+		System.out.println("MAX_LOG_SIZE=  "+tempo6);
 		if(tempo6==null || tempo6=="") {
 			MAX_LOG_SIZE=30;
 		}
@@ -211,13 +249,16 @@ private  ConfigHelper() {
 		
 	}
 public void WRITE_STATICS() {
-	updateproperty("ADMIN_USERNAME",ADMIN_USERNAME);
-	updateproperty("ADMIN_PASSWORD",ADMIN_PASSWORD);
+	updateproperty("USERNAME",ADMIN_USERNAME);
+	updateproperty("PASSWORD",ADMIN_PASSWORD);
 	updateproperty("MAX_SQLITE_DATABASE_SIZE",MAX_SQLITE_DATABASE_SIZE+"");
 	updateproperty("FIXED_REFRESH_FULL_DATA_TIME",FIXED_REFRESH_FULL_DATA_TIME+"");
 	updateproperty("FIXED_REFRESH_IMPORTANT_SUMMARY_TIME",FIXED_REFRESH_IMPORTANT_SUMMARY_TIME+"");
 	updateproperty("FIXED_REFRESH_SMALL_SUMMARY_TIME",FIXED_REFRESH_SMALL_SUMMARY_TIME+"");
 	updateproperty("WEBSERVICE_PORT",WEBSERVICE_PORT+"");
+	updateproperty("MAXIMUM_WRONG_PASSWORD_TRYOUTS",MAXIMUM_WRONG_PASSWORD_TRYOUTS+"");
+	updateproperty("WRONG_PASSWORD_JAIL_BLOCK_TIME",WRONG_PASSWORD_JAIL_BLOCK_TIME+"");
+
 	
 	
 	try {
@@ -232,14 +273,16 @@ public void WRITE_STATICS() {
 }
 public void FILL_EMPTY_CONFIG() {
 	
-	addproperty("ADMIN_USERNAME",ADMIN_USERNAME);
-	addproperty("ADMIN_PASSWORD",ADMIN_PASSWORD);
+	addproperty("USERNAME",ADMIN_USERNAME);
+	addproperty("PASSWORD",ADMIN_PASSWORD);
 	addproperty("MAX_SQLITE_DATABASE_SIZE",MAX_SQLITE_DATABASE_SIZE+"");
 	addproperty("FIXED_REFRESH_FULL_DATA_TIME",FIXED_REFRESH_FULL_DATA_TIME+"");
 	addproperty("FIXED_REFRESH_IMPORTANT_SUMMARY_TIME",FIXED_REFRESH_IMPORTANT_SUMMARY_TIME+"");
 	addproperty("FIXED_REFRESH_SMALL_SUMMARY_TIME",FIXED_REFRESH_SMALL_SUMMARY_TIME+"");
 	addproperty("WEBSERVICE_PORT",WEBSERVICE_PORT+"");
-	
+	addproperty("MAXIMUM_WRONG_PASSWORD_TRYOUTS",MAXIMUM_WRONG_PASSWORD_TRYOUTS+"");
+	addproperty("WRONG_PASSWORD_JAIL_BLOCK_TIME",WRONG_PASSWORD_JAIL_BLOCK_TIME+"");
+
 	try {
 		builder.save();
 	} catch (ConfigurationException e) {

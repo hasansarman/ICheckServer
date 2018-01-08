@@ -59,6 +59,7 @@ public class mainer {
 		logger.log(Level.INFO, "STARTING DB SYSTEMS");
 		Statics.dbHelper=new DBHelper();
 		logger.log(Level.INFO, "STARTING Status Server");
+		
 		WebServiceServer.get_instance().StartServer();
 	
 	}

@@ -36,6 +36,7 @@ import org.glassfish.jersey.servlet.ServletContainer;
 import com.google.gson.Gson;
 import com.hsarman.radonrad.serverchecker.database_utils.models.Stat_Logs;
 import com.hsarman.radonrad.serverchecker.utils.Statics;
+import com.hsarman.radonrad.serverchecker.utils.Utils;
 
 import oshi.SystemInfo;
 import oshi.hardware.Baseboard;
@@ -67,6 +68,7 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/StatusWebServiceRest")
 public class StatusWebServiceRest {
+	
 	@OPTIONS
 	@Path("{path : .*}")
 	public Response options() {
@@ -115,7 +117,7 @@ public class StatusWebServiceRest {
     @JSONP(queryParam = "callback")
 	public String FIXED_REFRESHED_FULL_DATA(@PathParam("username") String username,@PathParam("password") String password) {
 		 if(CHECK_USER(username,password)) {
-				return "GO AWAY";
+				return Utils.BLOCKER();
 			}
 		 
 		 
@@ -159,7 +161,7 @@ public class StatusWebServiceRest {
     @JSONP(queryParam = "callback")
 	public String FIXED_REFRESHED_IMPORTANT_SUMMARY(@PathParam("username") String username,@PathParam("password") String password) {
 		 if(CHECK_USER(username,password)) {
-				return "GO AWAY";
+				return Utils.BLOCKER();
 			}
 		 
 		  
@@ -197,7 +199,7 @@ public class StatusWebServiceRest {
     @JSONP(queryParam = "callback")
 	public String FIXED_REFRESHED_SMALL_SUMMARY(@PathParam("username") String username,@PathParam("password") String password) {
 		 if(CHECK_USER(username,password)) {
-				return "GO AWAY";
+				return Utils.BLOCKER();
 			}
 		 
 		  
@@ -235,7 +237,7 @@ public class StatusWebServiceRest {
     @JSONP(queryParam = "callback")
  public String JsonBASE_INFO(@PathParam("username") String username,@PathParam("password") String password) {
 	 if(CHECK_USER(username,password)) {
-			return "GO AWAY";
+			return Utils.BLOCKER();
 		}
 	 si = new SystemInfo();
 
@@ -274,7 +276,7 @@ public String Json_CPU_LOADS(@PathParam("username") String username,@PathParam("
     @JSONP(queryParam = "callback")
 public String Json_PROCESSES(@PathParam("username") String username,@PathParam("password") String password,@PathParam("input") int input) {
 	if(CHECK_USER(username,password)) {
-		return "GO AWAY";
+		return Utils.BLOCKER();
 	}
 	
 	si = new SystemInfo();
@@ -296,7 +298,7 @@ public String Json_PROCESSES(@PathParam("username") String username,@PathParam("
     @JSONP(queryParam = "callback")
 public String Json_SENSORS(@PathParam("username") String username,@PathParam("password") String password) {
 	if(CHECK_USER(username,password)) {
-		return "GO AWAY";
+		return Utils.BLOCKER();
 	}
 	
 	
@@ -319,7 +321,7 @@ public String Json_SENSORS(@PathParam("username") String username,@PathParam("pa
 public String Json_POWERSOURCE(@PathParam("username") String username,@PathParam("password") String password) {
 	
 	if(CHECK_USER(username,password)) {
-		return "GO AWAY";
+		return Utils.BLOCKER();
 	}
 	si = new SystemInfo();
 
@@ -339,7 +341,7 @@ public String Json_POWERSOURCE(@PathParam("username") String username,@PathParam
     @JSONP(queryParam = "callback")
 public String Json_DISKS(@PathParam("username") String username,@PathParam("password") String password) {
 	if(CHECK_USER(username,password)) {
-		return "GO AWAY";
+		return Utils.BLOCKER();
 	}
 	si = new SystemInfo();
 
@@ -360,7 +362,7 @@ public String Json_DISKS(@PathParam("username") String username,@PathParam("pass
 public String Json_USBS(@PathParam("username") String username,@PathParam("password") String password) {
 	
 	if(CHECK_USER(username,password)) {
-		return "GO AWAY";
+		return Utils.BLOCKER();
 	}
 	si = new SystemInfo();
 
@@ -382,7 +384,7 @@ public String Json_USBS(@PathParam("username") String username,@PathParam("passw
     @JSONP(queryParam = "callback")
 public String Json_DISPLAYS(@PathParam("username") String username,@PathParam("password") String password) {
 	if(CHECK_USER(username,password)) {
-		return "GO AWAY";
+		return Utils.BLOCKER();
 	}
 	si = new SystemInfo();
 
@@ -405,7 +407,7 @@ public String Json_DISPLAYS(@PathParam("username") String username,@PathParam("p
     @JSONP(queryParam = "callback")
 public String Json_NETWORK(@PathParam("username") String username,@PathParam("password") String password) {
 	if(CHECK_USER(username,password)) {
-		return "GO AWAY";
+		return Utils.BLOCKER();
 	}
 	si = new SystemInfo();
 
@@ -427,7 +429,7 @@ public String Json_NETWORK(@PathParam("username") String username,@PathParam("pa
     @JSONP(queryParam = "callback")
 public String Json_NETWORK_PARAMS(@PathParam("username") String username,@PathParam("password") String password) {
 	if(CHECK_USER(username,password)) {
-		return "GO AWAY";
+		return Utils.BLOCKER();
 	}
 	si = new SystemInfo();
 
@@ -448,7 +450,7 @@ public String Json_NETWORK_PARAMS(@PathParam("username") String username,@PathPa
     @JSONP(queryParam = "callback")
 public String Json_FILESYSTEM(@PathParam("username") String username,@PathParam("password") String password) {
 	if(CHECK_USER(username,password)) {
-		return "GO AWAY";
+		return Utils.BLOCKER();
 	}
 	si = new SystemInfo();
 
@@ -469,7 +471,7 @@ public String Json_FILESYSTEM(@PathParam("username") String username,@PathParam(
     @JSONP(queryParam = "callback")
 public String Json_IMPORTANT_SUMMARY(@PathParam("username") String username,@PathParam("password") String password) {
 	if(CHECK_USER(username,password)) {
-		return "GO AWAY";
+		return Utils.BLOCKER();
 	}
 	si = new SystemInfo();
 
@@ -493,7 +495,7 @@ public String Json_IMPORTANT_SUMMARY(@PathParam("username") String username,@Pat
     @JSONP(queryParam = "callback")
 public String Json_SMALL_SUMMARY(@PathParam("username") String username,@PathParam("password") String password) {
 	if(CHECK_USER(username,password)) {
-		return "GO AWAY";
+		return Utils.BLOCKER();
 	}
 	si = new SystemInfo();
 
@@ -511,22 +513,15 @@ public String Json_SMALL_SUMMARY(@PathParam("username") String username,@PathPar
 	
 }
 	  private boolean CHECK_USER(String username, String password) {
-			if(Statics.USERS.keySet().size()==0) {
-				return false;
-			}
-			else {
-				Set<String> userkeys = Statics.USERS.keySet();
-				for(String userN:userkeys) {
-					if(userN==username) {
-						String pass = Statics.USERS.get(username);
-						if(pass==password) {
-							return true;
-						}
-					}
+		//  System.out.println(username+" "+Statics.ADMIN_USERNAME );
+		 // System.out.println(password+"  "+Statics.ADMIN_PASSWORD);
+			if(username.trim().equals( Statics.ADMIN_USERNAME.trim())) {
+				if(password.trim().equals(Statics.ADMIN_PASSWORD.trim())) {
+					return false;
 				}
-				
 			}
-			return false;
+			
+			return true;
 		}
 private String RETURN_GSON(StatusData itemtemp,String type) {
 	Gson gson = new Gson();
@@ -606,7 +601,7 @@ public String JsonStatusFULL(@PathParam("username") String username,@PathParam("
 	
 	
 	if(CHECK_USER(username,password)) {
-		return "GO AWAY";
+		return Utils.BLOCKER();
 	}
     si = new SystemInfo();
 
@@ -674,7 +669,17 @@ return itemtemp;
 private StatusData NETWORK(StatusData itemtemp) {
 	 
 	 NetworkIF[] networkIFs = hal.getNetworkIFs();
+	 long lastupdate=Statics.LAST_UPDATE_WEB_SERVICE_TIME;
+	 long currentupdate=System.currentTimeMillis();
+	 long bytesrecv=0;
+	 long bytessent=0;
+			 
 	 for (NetworkIF net : networkIFs) {
+		 
+		 bytesrecv+=net.getBytesRecv();
+		 bytessent+=net.getBytesSent();
+		 
+		 
 		 boolean hasData = net.getBytesRecv() > 0 || net.getBytesSent() > 0 || net.getPacketsRecv() > 0
 	             || net.getPacketsSent() > 0;
 		 itemtemp.ADD_NETWORKIF(
@@ -696,6 +701,46 @@ private StatusData NETWORK(StatusData itemtemp) {
 				 );
 		 
 	 }
+	 
+	 //once bi bak bakalim eski data varmi ...
+	 try {
+	if( Statics.LAST_BYTES_RECV_TOTAL==0) {
+		//eski data yok.
+		Statics.LAST_BYTES_RECV_TOTAL=bytesrecv;
+		Statics.NETWORK_IN_SPEED=0+"";
+	}
+	else {
+		double gogo=(bytesrecv-Statics.LAST_BYTES_RECV_TOTAL)/((currentupdate-lastupdate)/1000);
+		Statics.NETWORK_IN_SPEED=(gogo*0.0000009536743164)+"";
+	}
+	 }
+	 catch(Exception e) {
+		 Statics.LAST_BYTES_RECV_TOTAL=bytesrecv;
+		 Statics.NETWORK_IN_SPEED=0+"";
+	 }
+	
+	try {
+	if( Statics.LAST_BYTES_SENT_TOTAL==0) {
+		//eski data yok.
+		Statics.LAST_BYTES_SENT_TOTAL=bytessent;
+		Statics.NETWORK_OUT_SPEED=0+"";
+	}
+	else {
+		double gogo=(bytessent-Statics.LAST_BYTES_SENT_TOTAL)/((currentupdate-lastupdate)/1000);
+		Statics.NETWORK_OUT_SPEED=(gogo*0.0000009536743164)+"";
+	}
+	}
+	catch(Exception e) {
+		Statics.LAST_BYTES_SENT_TOTAL=bytessent;
+		Statics.NETWORK_OUT_SPEED=0+"";
+	}
+	
+	//System.out.println(itemtemp.NETWORK_IN_SPEED+"  "+itemtemp.NETWORK_OUT_SPEED);
+	Statics.LAST_UPDATE_WEB_SERVICE_TIME=currentupdate;
+	itemtemp.LAST_BYTES_RECV_TOTAL=Statics.LAST_BYTES_RECV_TOTAL;
+	itemtemp.LAST_BYTES_SENT_TOTAL=Statics.LAST_BYTES_SENT_TOTAL;
+	itemtemp.NETWORK_IN_SPEED=Statics.NETWORK_IN_SPEED;
+	itemtemp.NETWORK_OUT_SPEED=Statics.NETWORK_OUT_SPEED;
 	 return itemtemp;
 }
 private StatusData DISPLAYS(StatusData itemtemp) {

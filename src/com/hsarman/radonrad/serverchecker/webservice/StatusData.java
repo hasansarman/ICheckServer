@@ -28,6 +28,10 @@ public class StatusData {
 	 
 
 	public String MANUFACTURER;
+	public   String NETWORK_IN_SPEED="0";
+	public   String NETWORK_OUT_SPEED="0";
+	public   long LAST_BYTES_RECV_TOTAL=0;
+	 public   long LAST_BYTES_SENT_TOTAL=0;
 	public String MODEL;
 	public String SERIAL;
 	public String FIRMWARE_MANUFACTURER;
@@ -49,6 +53,7 @@ public class StatusData {
 	public String SWAP_AVALIABLE;
 	public String SWAP_TOTAL;
 	public String UPTIME;
+	
 	public long PROCESSOR_USER;
 	public long PROCESSOR_NICE;
 	public long PROCESSOR_SYS;
