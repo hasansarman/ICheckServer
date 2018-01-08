@@ -27,7 +27,7 @@ There are multiple ways to install the software. You can even modify and change 
 for additional installation methods please check this topic.
  Add ubuntu ppa to your system.
   ```perl
- sudo add-apt-repository ppa:hasansarman/serverchecker
+ sudo add-apt-repository ppa:hasansarman/serverhealthchecker
 
  ```
  ### Update package lists
