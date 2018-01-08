@@ -624,7 +624,7 @@ private StatusData NETWORK(StatusData itemtemp) {
 				( hasData ? " (" + net.getInErrors() + " err)" : ""),
 						( hasData ? " (" + net.getOutErrors() + " err)" : ""),
 		 FormatUtil.formatValue(net.getSpeed(), "bps")
-		 
+		 ,net.getTimeStamp()
 				 );
 		 
 	 }

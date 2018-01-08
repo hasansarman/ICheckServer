@@ -203,9 +203,10 @@ public class StatusData {
 	 String BYTES_SENT,
 	 String RCV_ERRORS,
 	 String SENT_ERRORS,
-	 String SPEED) {
+	 String SPEED, long l) {
 		NETWORK.add(new NETWORKIF(NAME, DISPLAYNAME, MAC, MTU, IPV4, 
-				IPV6, PACKET_RCV, BYTES_RCV, PACKET_SENT, BYTES_SENT, RCV_ERRORS, SENT_ERRORS,SPEED));
+				IPV6, PACKET_RCV, BYTES_RCV, PACKET_SENT, BYTES_SENT, 
+				RCV_ERRORS, SENT_ERRORS,SPEED,l));
 
 		
 	}
@@ -223,6 +224,7 @@ public class StatusData {
 		 String RCV_ERRORS;
 		 String SENT_ERRORS;
 		 String SPEED;
+		 long TIMESTAMP;
 		 public NETWORKIF( String NAME,
  String DISPLAYNAME,
  String MAC,
@@ -235,7 +237,8 @@ public class StatusData {
  String BYTES_SENT,
  String RCV_ERRORS,
  String SENT_ERRORS,
- String SPEED) {
+ String SPEED,
+ long TIMESTAMP) {
 			 
 			 this.NAME=NAME;
 			 this.DISPLAYNAME=DISPLAYNAME;
@@ -250,6 +253,7 @@ public class StatusData {
 			 this.RCV_ERRORS=RCV_ERRORS;
 			 this.SENT_ERRORS=SENT_ERRORS;
 			 this.SPEED=SPEED;
+			 this.TIMESTAMP=TIMESTAMP;
 		 }
 		
 		

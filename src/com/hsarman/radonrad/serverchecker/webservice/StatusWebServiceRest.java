@@ -674,8 +674,18 @@ private StatusData NETWORK(StatusData itemtemp) {
 	 long bytesrecv=0;
 	 long bytessent=0;
 			 
+	/* long download1 = net.getBytesRecv();
+	 long timestamp1 = net.getTimeStamp();
+	 Thread.sleep(2000); //Sleep for a bit longer, 2s should cover almost every possible problem
+	 net.updateNetworkStats(); //Updating network stats
+	 long download2 = net.getBytesRecv();
+	 long timestamp2 = net.getTimeStamp();
+	 System.out.println("prova " + (download2 - download1)/(timestamp2 - timestamp1));
+	 */
+	 
+	 
 	 for (NetworkIF net : networkIFs) {
-		 
+		 net.updateNetworkStats();
 		 bytesrecv+=net.getBytesRecv();
 		 bytessent+=net.getBytesSent();
 		 
@@ -690,13 +700,14 @@ private StatusData NETWORK(StatusData itemtemp) {
 				
 				 Arrays.toString(net.getIPv4addr()),
 				 Arrays.toString(net.getIPv6addr()),
-				( hasData ? net.getPacketsRecv()+""  : "?"),
-				( hasData ? FormatUtil.formatBytes(net.getBytesRecv()) : "?"),
-				(hasData ? net.getPacketsSent()+"": "?"),
-				 (hasData ? FormatUtil.formatBytes(net.getBytesSent()) : "?"),
+				( hasData ? net.getPacketsRecv()+""  : "0"),
+				( hasData ? net.getBytesRecv()+"" : "0"),
+				(hasData ? net.getPacketsSent()+"": "0"),
+				 (hasData ? net.getBytesSent()+"" : "0"),
 				( hasData ? " (" + net.getInErrors() + " err)" : ""),
 						( hasData ? " (" + net.getOutErrors() + " err)" : ""),
-		 FormatUtil.formatValue(net.getSpeed(), "bps")
+		 FormatUtil.formatValue(net.getSpeed(), "bps"),
+		 net.getTimeStamp()
 		 
 				 );
 		 
